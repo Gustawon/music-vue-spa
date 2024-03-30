@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
+import MenuItem from "./components/MenuItem.vue";
 </script>
 
 <template>
@@ -7,7 +8,7 @@ import { RouterLink, RouterView } from "vue-router";
     <nav
       class="h-24 bg-gray-950 flex flex-row items-center gap-6 pl-6 border-b border-gray-500 border-solid"
     >
-      <img src="./assets/menu.svg" alt="menu" />
+      <img src="./assets/icons/menu.svg" alt="menu" />
       <img src="/yt-music-logo.svg" />
 
       <RouterLink
@@ -25,7 +26,7 @@ import { RouterLink, RouterView } from "vue-router";
   <div
     class="w-64 bg-gray-950 h-full mb-24 border-r border-gray-500 border-solid text-center pt-10"
   >
-    SideBar - App drawer
+    <MenuItem name="Home" icon="source.." :isSelected="true" />
   </div>
 
   <RouterView class="fixed w-full left-64 top-24 pt-6 mb-24 pb-24 bg-red-300" />
