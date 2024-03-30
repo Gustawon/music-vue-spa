@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
 import MenuItem from "./components/MenuItem.vue";
+import Player from "./components/Player.vue";
 </script>
 
 <template>
   <header class="h-24">
     <nav
-      class="h-24 bg-gray-950 flex flex-row items-center gap-6 pl-6 border-b border-gray-500 border-solid"
+      class="h-24 bg-gray-950 flex flex-row items-center gap-6 pl-5 border-b border-gray-500 border-solid"
     >
-      <img src="./assets/icons/menu.svg" alt="menu" />
+      <div class="hover:cursor-pointer hover:bg-gray-800 rounded-full p-1">
+        <img src="./assets/icons/menu.svg" alt="menu" />
+      </div>
       <img src="/yt-music-logo.svg" />
 
       <RouterLink
@@ -34,8 +37,9 @@ import MenuItem from "./components/MenuItem.vue";
   <footer
     class="fixed bottom-0 h-24 w-full bg-slate-900 flex border-t border-gray-500 border-solid"
   >
-    <div class="border-2 h-12 my-auto mx-auto align-middle p-2">
-      Footer - Audio Player
+    <!-- Footer - Audio Player -->
+    <div class="mx-auto">
+      <Player />
     </div>
   </footer>
 </template>
