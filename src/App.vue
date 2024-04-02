@@ -3,31 +3,39 @@ import { RouterLink, RouterView } from "vue-router";
 import MenuItem from "./components/MenuItem.vue";
 import MenuList from "./components/MenuList.vue";
 import Player from "./components/Player.vue";
+import AuthorizationModal from "./components/AuthorizationModal.vue";
 
 import { mapStores, mapActions, mapState } from "pinia";
 
 import { useMenuStore } from "./stores/menu";
+import { useAuthStore } from "./stores/auth";
 
 export default {
   name: "App",
   computed: {
     ...mapState(useMenuStore, ["showMenu", "selected"]),
+    ...mapState(useAuthStore, ["showModal"]),
   },
   methods: {
     ...mapActions(useMenuStore, {
       toggleMenu: "toggleMenu",
       selectMenuItem: "selectMenuItem",
     }),
+    ...mapActions(useAuthStore, {
+      toggleModal: "toggleModal",
+    }),
   },
   components: {
     Player,
     MenuItem,
     MenuList,
+    AuthorizationModal,
   },
 };
 </script>
 
 <template>
+  <AuthorizationModal />
   <div class="flex flex-col h-screen w-screen">
     <!-- Header -->
     <header class="h-24">
@@ -46,12 +54,12 @@ export default {
           </RouterLink>
         </div>
 
-        <RouterLink
-          to="/login"
+        <button
           class="border px-6 py-2 border-solid border-1 border-color-white"
-          @click="() => selectMenuItem('login-menu')"
-          >Login</RouterLink
+          @click="toggleModal"
         >
+          Login
+        </button>
       </nav>
     </header>
 
