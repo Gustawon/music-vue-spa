@@ -1,4 +1,11 @@
-<script></script>
+<script lang="ts">
+export default {
+  name: "Player",
+  data() {
+    return {};
+  },
+};
+</script>
 
 <template>
   <div class="w-full h-full flex items-center gap-8 px-auto">
