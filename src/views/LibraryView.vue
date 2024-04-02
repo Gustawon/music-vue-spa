@@ -13,7 +13,9 @@ export default {
 </script>
 
 <template>
-  <main class="h-full w-full">
-    <MusicList />
-  </main>
+  <div class="h-full w-full flex flex-col items-center justify-center">
+    <div>
+      <MusicList />
+    </div>
+  </div>
 </template>

@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-  <main class="h-full w-full flex">
+  <div class="h-full w-full flex items-center justify-center">
     <div>Manage View</div>
-  </main>
+  </div>
 </template>

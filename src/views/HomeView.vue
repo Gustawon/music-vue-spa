@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <main>
-    <div>This is HomeView</div>
-  </main>
+  <div class="w-full h-full flex items-center justify-center">
+    <div>Home View</div>
+  </div>
 </template>

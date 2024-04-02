@@ -1,6 +1,6 @@
 <script lang="ts">
 import MenuItem from "./MenuItem.vue";
-import IMenuItem from "../interfaces/IMenuItem";
+import type IMenuItem from "../interfaces/IMenuItem";
 
 export default {
   name: "MenuList",
