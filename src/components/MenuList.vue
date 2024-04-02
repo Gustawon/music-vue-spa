@@ -46,9 +46,6 @@ export default {
           iconFilled: "/src/assets/icons/info_filled.svg",
         } as IMenuItem,
       ],
-
-      // TODO - make this interactive
-      selectedMenuItem: "home-menu",
     };
   },
   components: {
@@ -59,7 +56,6 @@ export default {
   },
   methods: {
     clickHandler(name: string) {
-      console.log({ name });
       this.selectMenuItem(name);
     },
     ...mapActions(useMenuStore, {

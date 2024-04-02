@@ -6,7 +6,6 @@ export const useMenuStore = defineStore("menu", () => {
   const selected = ref("home");
 
   function toggleMenu() {
-    console.log("I will toggle menu");
     showMenu.value = !showMenu.value;
   }
 
