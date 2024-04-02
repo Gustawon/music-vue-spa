@@ -16,6 +16,7 @@ export default {
   methods: {
     ...mapActions(useMenuStore, {
       toggleMenu: "toggleMenu",
+      selectMenuItem: "selectMenuItem",
     }),
   },
   components: {
@@ -40,7 +41,7 @@ export default {
           >
             <img src="./assets/icons/menu.svg" alt="menu" />
           </button>
-          <RouterLink to="/">
+          <RouterLink to="/" @click="() => selectMenuItem('home-menu')">
             <img src="/yt-music-logo.svg" />
           </RouterLink>
         </div>
@@ -48,6 +49,7 @@ export default {
         <RouterLink
           to="/login"
           class="border px-6 py-2 border-solid border-1 border-color-white"
+          @click="() => selectMenuItem('login-menu')"
           >Login</RouterLink
         >
       </nav>

@@ -2,6 +2,9 @@
 import MenuItem from "./MenuItem.vue";
 import type IMenuItem from "../interfaces/IMenuItem";
 
+import { useMenuStore } from "../stores/menu";
+import { mapActions, mapState } from "pinia";
+
 export default {
   name: "MenuList",
   data() {
@@ -48,9 +51,20 @@ export default {
       selectedMenuItem: "home-menu",
     };
   },
-
   components: {
     MenuItem,
+  },
+  computed: {
+    ...mapState(useMenuStore, ["selected"]),
+  },
+  methods: {
+    clickHandler(name: string) {
+      console.log({ name });
+      this.selectMenuItem(name);
+    },
+    ...mapActions(useMenuStore, {
+      selectMenuItem: "selectMenuItem",
+    }),
   },
 };
 </script>
@@ -61,7 +75,8 @@ export default {
       v-for="item in menu"
       :key="item.key"
       :menuItem="item"
-      :selected="item.key === selectedMenuItem"
+      :selected="item.key === selected"
+      @click="() => clickHandler(item.key)"
     />
   </ul>
 </template>
