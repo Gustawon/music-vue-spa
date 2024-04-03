@@ -1,5 +1,5 @@
 <script lang="ts">
-import { RouterLink, RouterView, router } from "vue-router";
+import { RouterLink, RouterView } from "vue-router";
 import MenuItem from "./components/MenuItem.vue";
 import MenuList from "./components/MenuList.vue";
 import Player from "./components/Player.vue";
