@@ -1,11 +1,11 @@
 <script lang="ts">
-import { RouterLink, RouterView } from "vue-router";
+import { RouterLink, RouterView, router } from "vue-router";
 import MenuItem from "./components/MenuItem.vue";
 import MenuList from "./components/MenuList.vue";
 import Player from "./components/Player.vue";
 import AuthorizationModal from "./components/AuthorizationModal.vue";
 
-import { mapStores, mapActions, mapState } from "pinia";
+import { mapActions, mapState } from "pinia";
 
 import { useMenuStore } from "./stores/menu";
 import { useAuthStore } from "./stores/auth";
@@ -14,7 +14,7 @@ export default {
   name: "App",
   computed: {
     ...mapState(useMenuStore, ["showMenu", "selected"]),
-    ...mapState(useAuthStore, ["showModal"]),
+    ...mapState(useAuthStore, ["showModal", "userLoggedIn"]),
   },
   methods: {
     ...mapActions(useMenuStore, {
@@ -23,7 +23,18 @@ export default {
     }),
     ...mapActions(useAuthStore, {
       toggleModal: "toggleModal",
+      signOut: "signOut",
     }),
+    async logout() {
+      try {
+        await this.signOut();
+        if (this.$route.meta.requiresAuth) {
+          this.$router.push({ name: "home" });
+        }
+      } catch (error) {
+        console.error("Error while singin out..", error);
+      }
+    },
   },
   components: {
     Player,
@@ -55,11 +66,13 @@ export default {
         </div>
 
         <button
+          v-if="!userLoggedIn"
           class="border px-6 py-2 border-solid border-1 border-color-white"
           @click="toggleModal"
         >
           Login
         </button>
+        <button v-else class="px-6 py-2" @click="logout">Logout</button>
       </nav>
     </header>
 

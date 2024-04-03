@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection } from "firebase/firestore";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
 import { type DocumentData } from "firebase/firestore";
@@ -27,6 +27,7 @@ const songsCollection = collection(db, "songs");
 export {
   auth,
   signInWithEmailAndPassword,
+  signOut,
   db,
   usersCollection,
   songsCollection,
