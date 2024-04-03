@@ -1,9 +1,11 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
+import { Menu } from "../types/menu";
+
 export const useMenuStore = defineStore("menu", () => {
   const showMenu = ref(true);
-  const selected = ref("home");
+  const selected = ref(Menu.home as string);
 
   function toggleMenu() {
     showMenu.value = !showMenu.value;

@@ -21,6 +21,9 @@ export default {
     ...mapActions(useAuthStore, {
       loginUser: "login",
     }),
+    ...mapActions(useAuthStore, {
+      toggleModal: "toggleModal",
+    }),
     async login(values: IUserLoginData) {
       this.login_in_submission = true;
       this.login_show_alert = true;
@@ -39,7 +42,9 @@ export default {
       this.login_alert_variant = "bg-green-500";
       this.login_alert_msg = "Success! You are logged-in now.";
 
-      window.location.reload();
+      setTimeout(() => {
+        this.toggleModal();
+      }, 400);
     },
   },
 };

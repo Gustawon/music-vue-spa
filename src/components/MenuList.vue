@@ -55,9 +55,6 @@ export default {
     ...mapState(useMenuStore, ["selected"]),
   },
   methods: {
-    clickHandler(name: string) {
-      this.selectMenuItem(name);
-    },
     ...mapActions(useMenuStore, {
       selectMenuItem: "selectMenuItem",
     }),
@@ -72,7 +69,6 @@ export default {
       :key="item.key"
       :menuItem="item"
       :selected="item.key === selected"
-      @click="() => clickHandler(item.key)"
     />
   </ul>
 </template>
